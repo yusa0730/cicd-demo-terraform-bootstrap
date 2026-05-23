@@ -55,12 +55,14 @@ resource "aws_iam_role_policy" "terraform_plan" {
         Effect = "Allow"
         Action = [
           "ec2:Describe*", "ecs:Describe*", "ecs:List*",
-          "ecr:Describe*", "ecr:List*", "ecr:GetRepository*",
-          "rds:Describe*", "iam:Get*", "iam:List*",
+          "ecr:Describe*", "ecr:List*", "ecr:GetRepository*", "ecr:GetLifecyclePolicy",
+          "rds:Describe*", "rds:ListTagsForResource",
+          "iam:Get*", "iam:List*",
           "elasticloadbalancing:Describe*",
           "logs:Describe*", "logs:List*",
-          "secretsmanager:Describe*", "secretsmanager:List*",
+          "secretsmanager:Describe*", "secretsmanager:List*", "secretsmanager:GetResourcePolicy",
           "ssm:GetParameter*", "ssm:DescribeParameters",
+          "kms:Describe*", "kms:List*", "kms:GetKeyPolicy", "kms:GetKeyRotationStatus",
         ]
         Resource = ["*"]
       },
