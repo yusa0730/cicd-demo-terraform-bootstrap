@@ -74,7 +74,42 @@ IAM → Users → Create user
 
 ### Step 3: CODEOWNERS を設定する
 
-`.github/CODEOWNERS` の `@your-org/infra-approvers` を実際の Team 名に変更します。
+現在は個人アカウント（`@yusa0730`）で設定済みです。
+
+```
+/environments/      @yusa0730
+/.github/workflows/ @yusa0730
+/.github/CODEOWNERS @yusa0730
+```
+
+#### Team 運用への移行（Organization がある場合）
+
+IAM ロール・OIDC Provider の変更は全リポジトリの CI/CD に影響するため、Team による review を強く推奨します。
+
+**Team の作成手順**
+
+```
+1. github.com/<your-org> → Teams → New team
+     Team name: infra-approvers
+     Visibility: Visible（← CODEOWNERS 参照に必須）
+
+2. Teams → infra-approvers → Members → Add a member
+     → レビュアーを追加
+
+3. Teams → infra-approvers → Repositories → Add repository
+     → このリポジトリを追加
+     → Role: Write（← CODEOWNERS 機能に必須）
+```
+
+**CODEOWNERS の書き換え**
+
+```
+/environments/      @your-org/infra-approvers
+/.github/workflows/ @your-org/infra-approvers
+/.github/CODEOWNERS @your-org/infra-approvers
+```
+
+> `@your-org` は Organization 名、`infra-approvers` は Team 名に置き換えてください。
 
 ---
 

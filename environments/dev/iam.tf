@@ -175,15 +175,15 @@ resource "aws_iam_role_policy" "app_deploy" {
         Resource = ["*"]
       },
       {
-        Sid    = "SSMRead"
-        Effect = "Allow"
-        Action = ["ssm:GetParameter", "ssm:GetParameters"]
+        Sid      = "SSMRead"
+        Effect   = "Allow"
+        Action   = ["ssm:GetParameter", "ssm:GetParameters"]
         Resource = ["arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/${var.project}/${local.env}/*"]
       },
       {
-        Sid    = "PassECSRoles"
-        Effect = "Allow"
-        Action = ["iam:PassRole"]
+        Sid      = "PassECSRoles"
+        Effect   = "Allow"
+        Action   = ["iam:PassRole"]
         Resource = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.project}-${local.env}-*"]
       },
     ]
