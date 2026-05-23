@@ -114,6 +114,7 @@ resource "aws_iam_role_policy" "terraform_apply" {
         Action = [
           "ec2:*", "ecs:*", "ecr:*", "rds:*", "iam:*",
           "elasticloadbalancing:*", "logs:*", "secretsmanager:*", "ssm:*",
+          "kms:*",
         ]
         Resource = ["*"]
       },
