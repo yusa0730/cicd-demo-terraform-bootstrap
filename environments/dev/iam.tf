@@ -62,7 +62,7 @@ resource "aws_iam_role_policy" "terraform_plan" {
           "logs:Describe*", "logs:List*",
           "secretsmanager:Describe*", "secretsmanager:List*", "secretsmanager:GetResourcePolicy",
           "secretsmanager:GetSecretValue",
-          "ssm:GetParameter*", "ssm:DescribeParameters",
+          "ssm:GetParameter*", "ssm:DescribeParameters", "ssm:ListTagsForResource",
           "kms:Describe*", "kms:List*", "kms:GetKeyPolicy", "kms:GetKeyRotationStatus", "kms:Decrypt",
         ]
         Resource = ["*"]
