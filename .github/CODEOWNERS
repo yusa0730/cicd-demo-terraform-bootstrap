@@ -1,0 +1,5 @@
+# bootstrap 変更はインフラ管理 Team の review が必須
+# IAM ロール・OIDC プロバイダの変更は全リポジトリの CI/CD に影響する
+/environments/          @your-org/infra-approvers
+/.github/workflows/     @your-org/infra-approvers
+/.github/CODEOWNERS     @your-org/infra-approvers

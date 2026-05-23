@@ -1,0 +1,27 @@
+name: bootstrap-fmt
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: bootstrap-fmt-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.15.3"
+
+      - name: Terraform fmt
+        run: terraform fmt -check -recursive
